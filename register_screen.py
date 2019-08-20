@@ -105,9 +105,11 @@ class RegisterEditor:
         Label(container,text=self.description).pack(side=LEFT, fill=NONE)
 
     def write(self):
-        regValue = float(self.entry.get())
-        transformedRegValue = self.transformation.transformUserToReg(regValue)
-        self.serialCommander.writeCommand(self.identification + str(int(transformedRegValue)) + "\n")
+        regValue = self.entry.get()
+        if regValue.isdigit():
+            transformedRegValue = self.transformation.transformUserToReg(float(regValue))
+            self.serialCommander.writeCommand(self.identification + str(int(transformedRegValue)) + "\n")
+
 
 registers = {}
 
