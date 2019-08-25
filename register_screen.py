@@ -1,9 +1,17 @@
-from tkinter import Tk, Text, Scrollbar, Button, Label, Frame,LEFT,NONE, Entry
+from tkinter import Tk, Text, Scrollbar, Button, Label, Frame,LEFT,NONE, Entry, OptionMenu, StringVar
 from tkinter.constants import INSERT
-import serial
+import serial.tools.list_ports
 
 root = Tk()
 root.wm_title("Console tool")
+
+# Dictionary with options
+serialChoice = StringVar(root)
+choices = [v.name  for v in serial.tools.list_ports.comports()]
+popupMenu = OptionMenu(root, serialChoice, *choices)
+
+popupMenu.pack()
+
 
 #Taak starten die gaat lezen - eventueel syncrhonizeren om conflict met write te vermijde
 
