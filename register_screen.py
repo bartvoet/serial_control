@@ -8,6 +8,9 @@ root.wm_title("Console tool")
 # Dictionary with options
 serialChoice = StringVar(root)
 choices = [v.name  for v in serial.tools.list_ports.comports()]
+if len(choices) > 0:
+    serialChoice.set(choices[0])
+
 popupMenu = OptionMenu(root, serialChoice, *choices)
 
 popupMenu.pack()
