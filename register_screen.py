@@ -71,12 +71,6 @@ class SerialCommander:
         self.logCommand(command)
         self.ser.write(command.encode())
     
-    def read(self):
-        pass
-        
-    def write(self):
-        pass
-    
 serialCommander = SerialCommander()
 
 class RegisterEditor:
@@ -102,12 +96,6 @@ class RegisterEditor:
     def getRegId(self):
         return self.reg_id
   
-    def isWritable(self):
-        return self.writable
-    
-    def isReadable(self):
-        return self.readable
-    
     def draw(self,container):
         Label(container,text=self.name).pack(side=LEFT, fill=NONE)
         self.entry = Entry(container)
